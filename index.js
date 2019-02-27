@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const SquareConnect = require('square-connect');
 const app = express();
-const port = 8000;
+const PORT = process.env.PORT || 3000;
 
 var defaultClient = SquareConnect.ApiClient.instance;
 
@@ -13,7 +13,7 @@ oauth2.accessToken = process.env.SOOPER_SEKRET_KEY;
 var square_api = new SquareConnect.LocationsApi();
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log('We are live on ' + port);
 });
 
