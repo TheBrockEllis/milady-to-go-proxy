@@ -14,7 +14,7 @@ var square_api = new SquareConnect.LocationsApi();
 
 
 app.listen(PORT, () => {
-  console.log('We are live on ' + port);
+  console.log('We are live on ' + PORT);
 });
 
 app.get("/get", (req, res, next) => {
