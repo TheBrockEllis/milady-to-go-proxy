@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const basicAuth = require('express-basic-auth')
 const SquareConnect = require('square-connect');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 app.use(basicAuth({
   users: { 
