@@ -47,8 +47,7 @@ app.get("/catalogitems", (req, res, next) => {
   api_instance  = new SquareConnect.CatalogApi();
 
   var opts = {
-    // 'cursor': "cursor_example", // String | The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information.
-    'types': "ITEM" // String | An optional case-insensitive, comma-separated list of object types to retrieve, for example `ITEM,ITEM_VARIATION,CATEGORY`.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.
+    'types': "ITEM"
   };
   api_instance.listCatalog(opts).then(function (data) {
     console.log('API called successfully. Returned data: ' + data);
@@ -57,6 +56,21 @@ app.get("/catalogitems", (req, res, next) => {
     console.error(error);
   });
 });
+
+app.get("/modifierList/:locationId", (req, res, next) => {
+  const locationId = req.params.locationId;
+  
+  api_instance = new SquareConnect.V1ItemsApi();
+
+  apiInstance.listModifierLists(locationId).then(function(data) {
+    console.log('API called successfully. Returned data: ' + data);
+    res.json(data);
+  }, function(error) {
+    console.error(error);
+  });
+
+});
+
 
 app.listen(PORT, () => {
   console.log('We are live on ' + PORT);
