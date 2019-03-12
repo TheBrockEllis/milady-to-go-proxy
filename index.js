@@ -62,7 +62,7 @@ app.get("/modifierList/:locationId", (req, res, next) => {
   
   api_instance = new SquareConnect.V1ItemsApi();
 
-  apiInstance.listModifierLists(locationId).then(function(data) {
+  api_instance.listModifierLists(locationId).then(function(data) {
     console.log('API called successfully. Returned data: ' + data);
     res.json(data);
   }, function(error) {
